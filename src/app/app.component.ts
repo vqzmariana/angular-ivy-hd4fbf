@@ -18,22 +18,17 @@ import { MatCalendar } from '@angular/material/datepicker';
 export class AppComponent implements AfterViewInit, OnInit {
   outputDateFormat = 'MMM DD yyyy';
   selected: Date | null;
+  // Range to show.               // (num_of_days) * 24 * 60 * 60 * 1000
+  minDate = new Date(new Date().getTime() - 60 * 24 * 60 * 60 * 1000);
+  maxDate = new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000);
 
   @ViewChild(MatCalendar, { static: false }) calendar: MatCalendar<Date>;
 
   constructor(public renderer: Renderer2) {}
 
-  ngOnInit() {
-    // this.calendar.selectedChange.subscribe((x) => {
-    //   console.log('changes', x);
-    // });
-  }
+  ngOnInit() {}
 
   dateChanged(dateObject) {
-    /**
-     * mat-calendar-body-cell
-     *
-     */
     console.log(dateObject);
   }
 
